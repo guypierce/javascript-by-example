@@ -1,7 +1,7 @@
 // Ternary Control Flow
 let raceNumber = Math.floor(Math.random() * 1000),
 registeredEarly = true;
-const runnerAge = 9; 
+const runnerAge = 57; 
 
 runnerAge >= 18 && registeredEarly ?
   console.log(`${raceNumber + 1000 }
