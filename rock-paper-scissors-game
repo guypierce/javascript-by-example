@@ -5,7 +5,7 @@
 
 const getUserChoice = userInput => {
   userInput = userInput.toLowerCase();
-	if(userInput === 'rock'||userInput === 'paper'||userInput === 'scissors'||userInput === 'bomb') {
+	if(userInput === 'r'||userInput === 'p'||userInput === 's'||userInput === 'b') {
      return userInput;
      } else {
        console.log('Error: Type either: Rock, Paper or Scissors!');
@@ -22,62 +22,33 @@ const getComputerChoice = () => {
   const randomNumber = getRandomIntInclusive(0,2);
   console.log(randomNumber);
   	if(randomNumber === 0) {
-    	return 'rock';
+    	return 'r';
   } else if(randomNumber === 1) {
-    	return 'paper';
+    	return 'p';
   } else if(randomNumber === 2) {
-    	return 'scissors';
+    	return 's';
   }
 };
 
 const determineWinner = (userChoice, computerChoice) => {
-  if(userChoice === computerChoice) {
+  const pairing = userChoice + computerChoice;
+  console.log(pairing);
+  if(userChoice === 'b') {
+     return 'SNEAKY SNEAKY!';
+  } else if(pairing === 'rr'||pairing === 'pp'||pairing === 'ss') {
     return 'The match was a tie';
-  }
-  if(userChoice === 'rock') {
-    if(computerChoice === 'scissors') {
-      return 'You beat the computer';
-    }
-  }
-   if(userChoice === 'paper') {
-    if(computerChoice === 'rock') {
-      return 'You beat the computer';
-    }
-  }
-    if(userChoice === 'rock') {
-    	if(computerChoice === 'paper') {
-      return 'You let a computer beat you?';
-    }
-  }
-     if(userChoice === 'scissors') {
-    	if(computerChoice === 'rock') {
-      return 'You let a computer beat you?';
-    }
-  }
-  if(userChoice === 'paper') {
-    if(computerChoice === 'scissors') {
-      return 'You let a computer beat you?';
-    }
-  }
-  if(userChoice === 'scissors') {
-    if(computerChoice === 'paper') {
-      return 'You beat the computer';
-    }
-  }
-  if(userChoice === 'bomb') {
-    if(computerChoice === 'rock'||'paper'||'scissors') {
-      return 'SNEAKY SNEAKY!';
-    }
+  } else if(pairing === 'rp'||pairing === 'ps'||pairing === 'sr') {
+		return 'You let a computer beat you?';
+  } else {
+		return 'You beat the computer';
   }
 };
 
 const playGame = () => {
-  const userChoice = getUserChoice('bomb');
+  const userChoice = getUserChoice('p');
 		console.log(userChoice);
   const computerChoice = getComputerChoice();
   	console.log(computerChoice);
 	 	console.log(determineWinner(userChoice, computerChoice));
 };
 playGame();
-//console.log(getUserChoice('bat'));
-//console.log(determineWinner('paper','scissors'));
